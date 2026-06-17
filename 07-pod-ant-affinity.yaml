@@ -17,15 +17,23 @@ metadata:
   name: with-pod-anti-affinity
 spec:
   affinity:
-    podAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
           matchExpressions:
           - key: name
-            operator: NotIn
+            operator: In
             values:
             - pod-anti-affinity
-        topologyKey: topology.kubernetes.io/zone
+    # podAffinity:
+    #   requiredDuringSchedulingIgnoredDuringExecution:
+    #   - labelSelector:
+    #       matchExpressions:
+    #       - key: name
+    #         operator: NotIn
+    #         values:
+    #         - pod-anti-affinity
+    #     topologyKey: topology.kubernetes.io/zone
   containers:
   - name: nginx-with-pod-anti-affinity
     image: nginx 

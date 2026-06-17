@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-server
+spec:
+  selector:
+    matchLabels:
+      name: db-server 
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: db-server 
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: name 
+                operator: In
+                values:
+                - db-server 
+            topologyKey: "kubernetes.io/hostname"
+        # podAffinity:
+        #   requiredDuringSchedulingIgnoredDuringExecution:
+        #   - labelSelector:
+        #       matchExpressions:
+        #       - key: app
+        #         operator: In
+        #         values:
+        #         - store
+        #     topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: db-server 
+        image: nginx 

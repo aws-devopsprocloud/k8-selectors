@@ -1,17 +1,17 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: node-affinity
+  name: with-node-affinity
 spec:
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-          - key: demo
+          - key: project
             operator: In
             values:
-            - node-affinity           
+            - amazon           
   containers:
   - name: nginx
     image: nginx

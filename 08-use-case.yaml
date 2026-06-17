@@ -33,7 +33,7 @@ spec:
         #     topologyKey: "kubernetes.io/hostname"
       containers:
       - name: db-server 
-        image: nginx 
+        image: redis 
 
 --- 
 apiVersion: apps/v1

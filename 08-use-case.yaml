@@ -22,15 +22,6 @@ spec:
                 values:
                 - db-server 
             topologyKey: "kubernetes.io/hostname"
-        # podAffinity:
-        #   requiredDuringSchedulingIgnoredDuringExecution:
-        #   - labelSelector:
-        #       matchExpressions:
-        #       - key: app
-        #         operator: In
-        #         values:
-        #         - store
-        #     topologyKey: "kubernetes.io/hostname"
       containers:
       - name: db-server 
         image: redis 

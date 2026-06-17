@@ -24,3 +24,5 @@ spec:
   - name: nginx
     image: nginx
     imagePullPolicy: IfNotPresent
+
+    # weight works in preferredDuringSchedulingIgnoredDuringExecution ONLY

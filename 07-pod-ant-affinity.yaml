@@ -1,0 +1,31 @@
+apiVersion: v1 
+kind: Pod 
+metadata: 
+  name: pod-anti-affinity
+  labels: 
+    name: pod-anti-affinity
+spec:
+  containers: 
+  - name: nginx-pod-anti-affinity
+    image: nginx 
+    ports:
+    - containerPort: 80 
+--- 
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: with-pod-anti-affinity
+# spec:
+#   affinity:
+#     podAffinity:
+#       requiredDuringSchedulingIgnoredDuringExecution:
+#       - labelSelector:
+#           matchExpressions:
+#           - key: name
+#             operator: NotIn
+#             values:
+#             - pod-anti-affinity
+#         topologyKey: topology.kubernetes.io/zone
+#   containers:
+#   - name: nginx-with-pod-anti-affinity
+#     image: nginx 

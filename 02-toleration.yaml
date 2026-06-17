@@ -12,3 +12,10 @@ spec:
   - key: "project"
     operator: "Exists"
     effect: "NoSchedule"
+
+    # If we put Operator as equal, then we have to mention the value as well 
+  # tolerations:
+  # - key: "key1"
+  #   operator: "Equal"
+  #   value: "value1"
+  #   effect: "NoSchedule"

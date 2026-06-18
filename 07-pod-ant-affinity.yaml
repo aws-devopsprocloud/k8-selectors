@@ -19,13 +19,15 @@ spec:
   affinity:
     podAntiAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
-          matchExpressions:
-          - key: name
-            operator: In
-            values:
-            - pod-anti-affinity
-        topologyKey: topology.kubernetes.io/zone
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+            - key: name
+              operator: In
+              values:
+              - pod-anti-affinity
+          topologyKey: kubernetes.io/hostname
     # podAffinity:
     #   requiredDuringSchedulingIgnoredDuringExecution:
     #   - labelSelector:
